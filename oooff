@@ -1,0 +1,118 @@
+public class SuperCleanupKarel extends SuperKarel
+{
+    public void run()
+    {
+        while (frontIsClear())
+        {
+            cleanRow();
+            if (facingWest())
+            {
+                if (rightIsBlocked())
+                {
+                    returnToStart();
+                }
+                else();
+                {
+                    climb();
+                }
+            }
+            else
+            {
+                if (leftIsBlocked())
+                {
+                    returnToStart();
+                }
+                else
+                {
+                    climb();
+                }
+            }
+        }
+        if (frontIsBlocked())
+        {
+            if (rightIsBlocked())
+            {
+                turnAround();
+                if (frontIsBlocked())
+                {
+                    turnRight();
+                    cleanRow();
+                    turnAround();
+                    cleanRow();
+                }
+                else
+                {
+                    turnAround();
+                }
+            }
+        }
+    }
+    private void cleanRow()
+    {
+        if (ballsPresent())
+        {
+            takeBall();
+        }
+        while (frontIsClear())
+        {
+            move();
+            if (ballsPresent())
+            {
+                takeBall();
+            }
+        }
+    }
+    private void climb()
+    {
+        while (notFacingNorth())
+        {
+            turnLeft();
+        }
+        if (leftIsBlocked())
+        {
+            move();
+            if (rightIsBlocked())
+            {
+                cleanRow();
+            }
+            else
+            {
+                turnRight();
+            }
+        }
+        else
+        {
+            move();
+            if (rightIsBlocked())
+            {
+                turnLeft();
+            }
+        }
+    }
+    private void returnToStart()
+    {
+        if (facingWest())
+        {
+            turnLeft();
+            while(frontIsClear())
+            {
+                move();
+            }
+        }
+        if (facingEast())
+        {
+            turnAround();
+            while (frontIsClear())
+            {
+                move();
+            }
+            turnLeft();
+            while(frontIsClear())
+            {
+                move();
+            }
+        }
+    }
+    /*
+    comments are supid*/
+}
