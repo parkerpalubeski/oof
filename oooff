@@ -1,118 +1,55 @@
-public class SuperCleanupKarel extends SuperKarel
+public class DoubleTennisBallsKarel extends SuperKarel
 {
+    /*comments
+    *are
+    *dumb
+    */
     public void run()
     {
-        while (frontIsClear())
+        move();
+        while (ballsPresent())
         {
-            cleanRow();
-            if (facingWest())
-            {
-                if (rightIsBlocked())
-                {
-                    returnToStart();
-                }
-                else();
-                {
-                    climb();
-                }
-            }
-            else
-            {
-                if (leftIsBlocked())
-                {
-                    returnToStart();
-                }
-                else
-                {
-                    climb();
-                }
-            }
+            checkBall();
         }
-        if (frontIsBlocked())
+        if (facingSouth())
         {
-            if (rightIsBlocked())
-            {
-                turnAround();
-                if (frontIsBlocked())
-                {
-                    turnRight();
-                    cleanRow();
-                    turnAround();
-                    cleanRow();
-                }
-                else
-                {
-                    turnAround();
-                }
-            }
+            doubleSeven();
         }
-    }
-    private void cleanRow()
-    {
-        if (ballsPresent())
+        if (facingNorth())
         {
-            takeBall();
+            doubleTwentyOne();
         }
-        while (frontIsClear())
-        {
-            move();
-            if (ballsPresent())
-            {
-                takeBall();
-            }
-        }
-    }
-    private void climb()
-    {
-        while (notFacingNorth())
+        while(notFacingWest())
         {
             turnLeft();
         }
-        if (leftIsBlocked())
-        {
-            move();
-            if (rightIsBlocked())
-            {
-                cleanRow();
-            }
-            else
-            {
-                turnRight();
-            }
-        }
-        else
-        {
-            move();
-            if (rightIsBlocked())
-            {
-                turnLeft();
-            }
-        }
+        move();
+        turnAround();
     }
-    private void returnToStart()
+    private void checkBall()
     {
-        if (facingWest())
-        {
-            turnLeft();
-            while(frontIsClear())
-            {
-                move();
-            }
-        }
-        if (facingEast())
-        {
-            turnAround();
-            while (frontIsClear())
-            {
-                move();
-            }
-            turnLeft();
-            while(frontIsClear())
-            {
-                move();
-            }
-        }
+        takeBall();
+        turnLeft();
     }
-    /*
-    comments are supid*/
-}
+    private void putTwoBalls()
+    {
+        putBall();
+        putBall();
+    }
+    private void doubleSeven()
+    {
+        putTwoBalls();
+        putTwoBalls();
+        putTwoBalls();
+        putTwoBalls();
+        putTwoBalls();
+        putTwoBalls();
+        putTwoBalls();
+    }
+    private void doubleTwentyOne()
+    {
+        doubleSeven();
+        doubleSeven();
+        doubleSeven();
+    }
+}          
