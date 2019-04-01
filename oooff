@@ -1,55 +1,93 @@
-public class DoubleTennisBallsKarel extends SuperKarel
+public class MidpointKarel extends SuperKarel
 {
-    /*comments
-    *are
-    *dumb
-    */
     public void run()
     {
+        if (frontIsClear())
+        {
+            move();
+            move();
+            move();
+            move();
+            if (frontIsClear())
+            {
+                move();
+                move();
+                if (frontIsBlocked())
+                {
+                    midpoint7();
+                }
+                else
+                {
+                    move();
+                    if(frontIsClear())
+                    {
+                        move();
+                        move();
+                        move();
+                        move();
+                        move();
+                        move();
+                        move();
+                        midpoint15();
+                    }
+                    else
+                    {
+                        midpoint8();
+                    }
+                }
+            }
+            else
+            {
+                midpoint5();
+            }
+        }
+        else
+        {
+            midpoint1();
+        }
+    }
+    private void midpoint1()
+    {
+        putBall();
+    }
+    private void midpoint5()
+    {
+        turnAround();
         move();
-        while (ballsPresent())
-        {
-            checkBall();
-        }
-        if (facingSouth())
-        {
-            doubleSeven();
-        }
-        if (facingNorth())
-        {
-            doubleTwentyOne();
-        }
-        while(notFacingWest())
-        {
-            turnLeft();
-        }
         move();
+        putBall();
         turnAround();
     }
-    private void checkBall()
+    private void midpoint7()
     {
-        takeBall();
-        turnLeft();
-    }
-    private void putTwoBalls()
-    {
+        turnAround();
+        move();
+        move();
+        move();
         putBall();
+        turnAround();
+    }
+    private void midpoint8()
+    {
+        turnAround();
+        move();
+        move();
+        move();
+        move();
         putBall();
+        turnAround();
     }
-    private void doubleSeven()
+    private void midpoint15()
     {
-        putTwoBalls();
-        putTwoBalls();
-        putTwoBalls();
-        putTwoBalls();
-        putTwoBalls();
-        putTwoBalls();
-        putTwoBalls();
+        turnAround();
+        move();
+        move();
+        move();
+        move();
+        move();
+        move();
+        move();
+        putBall();
+        turnAround();
     }
-    private void doubleTwentyOne()
-    {
-        doubleSeven();
-        doubleSeven();
-        doubleSeven();
-    }
-}          
+}
